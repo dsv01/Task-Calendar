@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es2022",   
+
+    /* Modules */
+    "module": "commonjs", 
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Completeness */
+    "skipLibCheck": true
+  }
+}
