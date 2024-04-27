@@ -33,3 +33,33 @@ export const Footer = styled.div `
 
     background-color: #aaaccc;
 `;
+
+export const Logo = styled.h1 `
+    display: flex;
+
+    width: 4.5 vw;
+    height: 4.5 hw;
+
+    margin-left: 30px;
+
+    color: #5F617A;
+    font-family: 'Arial', sans-serif;
+`;
+
+export const LeftSide = styled.div `
+    display:flex;
+
+    width: 35%;
+    height: 100%;
+
+    background-color: #80fa46;
+`;
+
+export const RightSide = styled.div `
+    display:flex;
+
+    width: 65%;
+    height: 100%;
+
+    background-color: #Fa7d46;
+`;
