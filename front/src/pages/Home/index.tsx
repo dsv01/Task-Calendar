@@ -1,6 +1,7 @@
 import { HomeDiv, Header, Content, Footer, Logo, LeftSide, RightSide } from "./style";
 import ComboView from "../../components/ComboView";
 import PeriodView from "../../components/PeriodView";
+import SearchBar from "../../components/SearchBar";
 
 import { useState } from 'react';
 
@@ -20,6 +21,7 @@ export default function Home()
                 <Logo>Task Calendar</Logo>
                 <ComboView options={optionComboView} onChange={reactChangeComboView}></ComboView>
                 <PeriodView label={periodLabel}></PeriodView>
+                <SearchBar></SearchBar>
             </Header>
 
             <Content>
