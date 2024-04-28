@@ -10,6 +10,7 @@ export const HomeDiv = styled.div `
 export const Header = styled.div `
     display: flex;
     flex-direction: row;
+    align-items: center;
 
     height: 15%;
 
