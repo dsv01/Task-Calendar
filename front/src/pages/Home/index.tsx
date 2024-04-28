@@ -1,5 +1,8 @@
 import { HomeDiv, Header, Content, Footer, Logo, LeftSide, RightSide } from "./style";
 import ComboView from "../../components/ComboView";
+import PeriodView from "../../components/PeriodView";
+
+import { useState } from 'react';
 
 function reactChangeComboView()
 {
@@ -9,12 +12,14 @@ function reactChangeComboView()
 export default function Home()
 {
     const optionComboView = ["Day", "Week", "Month"];
+    const [periodLabel, setPeriodLabel] = useState<string>("Agosto 26-31");
 
     return (
         <HomeDiv>
             <Header>
                 <Logo>Task Calendar</Logo>
                 <ComboView options={optionComboView} onChange={reactChangeComboView}></ComboView>
+                <PeriodView label={periodLabel}></PeriodView>
             </Header>
 
             <Content>

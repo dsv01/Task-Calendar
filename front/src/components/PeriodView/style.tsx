@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ComboViewDiv = styled.div `
+export const PeriodViewDiv = styled.div `
     display: flex;
 
     width: 5 vw;
@@ -9,7 +9,7 @@ export const ComboViewDiv = styled.div `
     margin: 20px;
 `;
 
-export const ComboSelect = styled.select `
+export const PeriodLabel = styled.label `
     display: flex;
 
     width: 5 vw;
