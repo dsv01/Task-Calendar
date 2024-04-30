@@ -2,6 +2,7 @@ import { HomeDiv, Header, Content, Footer, Logo, LeftSide, RightSide } from "./s
 import ComboView from "../../components/ComboView";
 import PeriodView from "../../components/PeriodView";
 import SearchBar from "../../components/SearchBar";
+import EditTaskForm from "../../components/EditTaskForm";
 
 import { useState } from 'react';
 
@@ -15,6 +16,11 @@ export default function Home()
     const optionComboView = ["Day", "Week", "Month"];
     const [periodLabel, setPeriodLabel] = useState<string>("Agosto 26-31");
 
+    const [title, setTitle] = useState<string>("");
+    const [description, setDescription] = useState<string>("");
+    const [date, setDate] = useState<string>("");
+    const [duration, setDuration] = useState<string>("");
+
     return (
         <HomeDiv>
             <Header>
@@ -25,7 +31,9 @@ export default function Home()
             </Header>
 
             <Content>
-                <LeftSide></LeftSide>
+                <LeftSide>
+                    <EditTaskForm title={title} description={description} date={date} duration={duration}></EditTaskForm>
+                </LeftSide>
                 <RightSide></RightSide>
             </Content>
 

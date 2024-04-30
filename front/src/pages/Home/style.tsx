@@ -53,7 +53,7 @@ export const LeftSide = styled.div `
     width: 35%;
     height: 100%;
 
-    background-color: #80fa46;
+    // background-color: #80fa46;
 `;
 
 export const RightSide = styled.div `
