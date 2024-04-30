@@ -10,3 +10,11 @@ datasource db {
   url      = "file:./dev.db"
 }
 
+model Task{
+  id            Int       @id         @default(autoincrement())
+  title         String    @unique     
+  description   String
+  date          DateTime
+  duration      DateTime    
+}
+
