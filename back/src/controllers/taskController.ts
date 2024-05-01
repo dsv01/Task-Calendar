@@ -10,14 +10,19 @@ class TaskController
     {
         try{
             validationResult(request).throw();
-            const {title, description, date, duration} = request.body;
+            const {title, description, date, durationHour, durationMinute} = request.body;
+
+            const [year, month, day, hour, minute] = splitDateAndHour(date);
+            const dataInput = new Date(year,month, day, hour, minute);
 
             let taskInput:Prisma.TaskCreateInput = {
                 title:title,
                 description:description,
-                date:date,
-                duration:duration
+                date:dataInput,
+                durationHour:parseInt(durationHour),
+                durationMinute:parseInt(durationMinute)
             }
+
 
             const task = await prisma.task.create({data:taskInput});
 
@@ -58,7 +63,7 @@ class TaskController
     {
         try{
             validationResult(request).throw();
-            const {title, description, date, duration} = request.body;
+            const {title, description, date, durationHour, durationMinute} = request.body;
 
             const task = await prisma.task.findUnique({
                 where: {title:String(title)}
@@ -67,11 +72,15 @@ class TaskController
             if(!task)
                 return response.status(404).json({message:"Task não encontrada"});
 
+            const [year, month, day, hour, minute] = splitDateAndHour(date);
+            const dataInput = new Date(year,month, day, hour, minute);
+
             let taskInput:Prisma.TaskCreateInput = {
                 title:title,
                 description:description,
-                date:date,
-                duration:duration
+                date:dataInput,
+                durationHour:parseInt(durationHour),
+                durationMinute:parseInt(durationMinute)
             }
 
             const updatedTask = await prisma.task.update({
@@ -115,6 +124,24 @@ class TaskController
             return response.status(500).json(error);
         }
     }
+}
+
+function splitDateAndHour(date:string):Array<number>
+{
+    const datePart = date.split("T")[0];
+    const hourPart = date.split("T")[1];
+
+    const elementsDate:Array<string> = datePart.split("/");
+    const elementsHours:Array<string> = hourPart.split(":");
+
+    const year = parseInt(elementsDate[0], 10)
+    const month = parseInt(elementsDate[1], 10) -1;
+    const day = parseInt(elementsDate[2], 10)
+
+    const hour = parseInt(elementsHours[0], 10)
+    const minute = parseInt(elementsHours[1], 10)
+
+    return [year, month, day, hour, minute];
 }
 
 export default new TaskController();

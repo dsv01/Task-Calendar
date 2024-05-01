@@ -1,4 +1,4 @@
-import {body, header, ValidationChain, query} from "express-validator"
+import {body, ValidationChain, query} from "express-validator"
 
 function validateTitle():ValidationChain
 {
@@ -18,10 +18,16 @@ function validateDate():ValidationChain
     .isString().withMessage("Precisa ser texto");
 }
 
-function validateDuration():ValidationChain
+function validateHourDuration():ValidationChain
 {
-    return body("duration").exists().withMessage("Precisa ter o campo duration")
-    .isString().withMessage("Precisa ser texto");
+    return body("durationHour").exists().withMessage("Precisa ter o campo durationHour")
+    .isInt().withMessage("Precisa ser inteiro");
+}
+
+function validateMinuteDuration():ValidationChain
+{
+    return body("durationMinute").exists().withMessage("Precisa ter o campo durationMinute")
+    .isInt().withMessage("Precisa ser inteiro");
 }
 
 function validateIdTitleTask():ValidationChain
@@ -35,7 +41,7 @@ function validatorTask(method:string)
     switch(method)
     {
         case "createTask":{
-            return [validateTitle(), validateDescription(), validateDate(), validateDuration()]
+            return [validateTitle(), validateDescription(), validateDate(), validateHourDuration(), validateMinuteDuration()]
         }
 
         case "showTask":{
@@ -43,7 +49,7 @@ function validatorTask(method:string)
         }
 
         case "updateTask":{
-            return [validateTitle(), validateDescription(), validateDate(), validateDuration()]
+            return [validateTitle(), validateDescription(), validateDate(), validateHourDuration(), validateMinuteDuration()]
         }
 
         case "destroyTask":{
