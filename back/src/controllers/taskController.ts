@@ -1,5 +1,6 @@
 import { PrismaClient, Prisma } from "@prisma/client";
 import { Response, Request } from "express";
+import {validationResult} from "express-validator"
 
 const prisma = new PrismaClient();
 
@@ -8,6 +9,7 @@ class TaskController
     async createTask(request:Request, response:Response)
     {
         try{
+            validationResult(request).throw();
             const {title, description, date, duration} = request.body;
 
             let taskInput:Prisma.TaskCreateInput = {
@@ -32,6 +34,7 @@ class TaskController
     async showTask(request:Request, response:Response)
     {
         try{
+            validationResult(request).throw();
             const {title} = request.query;
 
             const task = await prisma.task.findUnique({
@@ -54,6 +57,7 @@ class TaskController
     async updateTask(request:Request, response:Response)
     {
         try{
+            validationResult(request).throw();
             const {title, description, date, duration} = request.body;
 
             const task = await prisma.task.findUnique({
@@ -88,6 +92,7 @@ class TaskController
     async destroyTask(request:Request, response:Response)
     {
         try{
+            validationResult(request).throw();
             const {title} = request.query;
 
             const task = await prisma.task.findUnique({
