@@ -62,5 +62,5 @@ export const RightSide = styled.div `
     width: 65%;
     height: 100%;
 
-    background-color: #Fa7d46;
+    // background-color: #Fa7d46;
 `;

@@ -3,6 +3,7 @@ import ComboView from "../../components/ComboView";
 import PeriodView from "../../components/PeriodView";
 import SearchBar from "../../components/SearchBar";
 import EditTaskForm from "../../components/EditTaskForm";
+import CalendarView from "../../components/CalendarView";
 
 import { useState } from 'react';
 
@@ -34,7 +35,9 @@ export default function Home()
                 <LeftSide>
                     <EditTaskForm title={title} description={description} date={date} duration={duration}></EditTaskForm>
                 </LeftSide>
-                <RightSide></RightSide>
+                <RightSide>
+                    <CalendarView></CalendarView>
+                </RightSide>
             </Content>
 
             <Footer></Footer>
