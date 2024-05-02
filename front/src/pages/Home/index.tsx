@@ -17,10 +17,12 @@ export default function Home()
     const optionComboView = ["Day", "Week", "Month"];
     const [periodLabel, setPeriodLabel] = useState<string>("Agosto 26-31");
 
-    const [title, setTitle] = useState<string>("");
-    const [description, setDescription] = useState<string>("");
-    const [date, setDate] = useState<string>("");
-    const [duration, setDuration] = useState<string>("");
+    // const [title, setTitle] = useState<string>("");
+    // const [description, setDescription] = useState<string>("");
+    // const [date, setDate] = useState<string>("");
+    // const [duration, setDuration] = useState<string>("");
+
+    const [events, setEvents] = useState<Array<object>>([]);
 
     return (
         <HomeDiv>
@@ -33,10 +35,10 @@ export default function Home()
 
             <Content>
                 <LeftSide>
-                    <EditTaskForm title={title} description={description} date={date} duration={duration}></EditTaskForm>
+                    <EditTaskForm events={events} setEvents={setEvents}></EditTaskForm>
                 </LeftSide>
                 <RightSide>
-                    <CalendarView></CalendarView>
+                    <CalendarView events={events}></CalendarView>
                 </RightSide>
             </Content>
 

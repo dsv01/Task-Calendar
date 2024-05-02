@@ -1,8 +1,13 @@
 import { CalendarViewDiv } from "./style"
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
+
+type Props = 
+{
+    events:Array<object>
+}
 
 function renderEventContent(eventInfo:any)
 {
@@ -14,10 +19,8 @@ function renderEventContent(eventInfo:any)
     )
 }
 
-export default function CalendarView()
+export default function CalendarView({events}:Props)
 {
-    const [events, setEvents] = useState<Array<object>>([]);
-
     return(
         <CalendarViewDiv>
             <FullCalendar

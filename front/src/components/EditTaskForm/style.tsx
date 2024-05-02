@@ -13,7 +13,7 @@ export const EditTaskFormDiv = styled.form `
     background-color: #f9f9f9;
 `;
 
-export const EditTaskFormDivLabelInput = styled.form `
+export const EditTaskFormDivLabelInput = styled.div `
     display: flex;
     flex-direction: column;
 

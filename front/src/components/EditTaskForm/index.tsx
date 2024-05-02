@@ -1,18 +1,28 @@
+import { throws } from "assert";
 import { EditTaskFormDiv, EditTaskFormInput, EditTaskFormLabel, EditTaskFormTextArea, 
     EditTaskFormDivLabelInput} from "./style";
 
+import { useState } from 'react';
+
 type Props = 
 {
-    title:string,
-    description:string,
-    date:string,
-    duration:string
+    // title:string,
+    // description:string,
+    // date:string,
+    // duration:string
+
+    events:Array<object>
+    setEvents:Function
 }
 
-export default function EditTaskForm({title, description, date, duration}:Props)
+export default function EditTaskForm({setEvents, events}:Props)
 {
+    const handleSubmit = (event:any) =>
+    {
+        // event.preventDefault();
+    }
     return (
-        <EditTaskFormDiv action="localhost:5000/createTask" method="post">
+        <EditTaskFormDiv id="formTask" action="http://localhost:5000/task/createTask" onSubmit={handleSubmit} method="post">
             <EditTaskFormDivLabelInput>
                 <EditTaskFormLabel>Nome</EditTaskFormLabel>
                 <EditTaskFormInput type="text" name="Name"></EditTaskFormInput>
@@ -25,7 +35,7 @@ export default function EditTaskForm({title, description, date, duration}:Props)
 
             <EditTaskFormDivLabelInput>
                 <EditTaskFormLabel>Horário</EditTaskFormLabel>
-                <EditTaskFormInput type="date" name="Hour"></EditTaskFormInput>
+                <EditTaskFormInput type="datetime-local" name="Hour"></EditTaskFormInput>
             </EditTaskFormDivLabelInput>
 
             <EditTaskFormDivLabelInput>
